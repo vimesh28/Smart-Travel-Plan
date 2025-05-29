@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Travel Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="travel.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4"> <span class="text-light">Smart</span> <span class="text-info">Travel</span> <span class="text-light">Planner</span></h1>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="cardTop">
+                    <div id="graphCanvas"></div>
+                </div>
+                
+                <div class="cardLast">
+                    <h3>Route Analysis</h3>
+                    <div class="chart-container">
+                        <canvas id="routeChart"></canvas>`
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="cardLeft">
+                    <h3>Plan Your Route</h3>
+                    <div class="optimization-criteria">
+                        <button class="criteria-btn active" data-criteria="distance">Shortest Distance</button>
+                        <button class="criteria-btn" data-criteria="time">Fastest Time</button>
+                        <button class="criteria-btn" data-criteria="cost">Lowest Cost</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="startLocation">Start Location:</label>
+                        <select id="startLocation" class="form-control">
+                            <option value="">Select start location</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="endLocation">End Location:</label>
+                        <select id="endLocation" class="form-control">
+                            <option value="">Select end location</option>
+                        </select>
+                    </div>
+                    
+                    <button id="calculateRoute" class="btn btn-primary w-100">Calculate Route</button>
+                    
+                    <div id="pathResult" class="route-details"></div>
+                    <div id="distanceResult" class="route-details"></div>
+                </div>
+                
+                <div class="card">
+                    <h3>Add New Location</h3>
+                    <div class="add-location-form">
+                        <div class="form-group">
+                            <label for="newLocationName">Location Name:</label>
+                            <input type="text" id="newLocationName" class="form-control" placeholder="Enter location name">
+                        </div>
+                        <div class="form-group">
+                            <label for="newLocationLat">Latitude:</label>
+                            <input type="number" id="newLocationLat" class="form-control" step="0.0001" placeholder="Enter latitude">
+                        </div>
+                        <div class="form-group">
+                            <label for="newLocationLng">Longitude:</label>
+                            <input type="number" id="newLocationLng" class="form-control" step="0.0001" placeholder="Enter longitude">
+                        </div>
+                        <button id="addLocation" class="btn btn-primary w-100">Add Location</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="travel.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const planner = new TravelPlanner();
+            
+            // Setup optimization criteria buttons
+            document.querySelectorAll('.criteria-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.criteria-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    planner.setOptimizationCriteria(this.dataset.criteria);
+                });
+            });
+            
+            // Setup add location form
+            document.getElementById('addLocation').addEventListener('click', function() {
+                const name = document.getElementById('newLocationName').value;
+                const lat = parseFloat(document.getElementById('newLocationLat').value);
+                const lng = parseFloat(document.getElementById('newLocationLng').value);
+                
+                if (name && !isNaN(lat) && !isNaN(lng)) {
+                    if (planner.addLocation(name, lat, lng)) {
+                        document.getElementById('newLocationName').value = '';
+                        document.getElementById('newLocationLat').value = '';
+                        document.getElementById('newLocationLng').value = '';
+                    }
+                } else {
+                    alert('Please fill in all fields with valid values');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

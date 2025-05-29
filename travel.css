@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: linear-gradient(to right, #1f2937, #4b5563);
+    margin: 0;
+    padding: 20px;
+
+    background-image: url('https://media.istockphoto.com/id/1194295234/vector/seamless-pattern-airplanes-routes.jpg?s=1024x1024&w=is&k=20&c=s5oix6pDYCq9TTV104H51g_qBtKUJyBd67AFDYvTH8Y=');
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: black 5px 4px 19px 1px;
+    background: #e5e5e5;
+}
+.cardTop {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: black 5px 4px 19px 1px;
+    background: black;
+}
+.cardLeft {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: black 5px 4px 19px 1px;
+    background: #e5e5e5;
+}
+.cardLast {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: black 5px 4px 19px 1px;
+    /* background: #e5e5e5; */
+}
+
+#graphCanvas {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    /* background: white; */
+        background: #defdff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #0984e3;
+    border: none;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0873c4;
+}
+
+.route-details {
+    margin-top: 20px;
+    padding: 5px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.chart-container {
+    margin-top: 20px;
+    height: 300px;
+}
+
+.transport-mode {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.optimization-criteria {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.criteria-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.criteria-btn.active {
+    background: #0984e3;
+    color: white;
+    border-color: #0984e3;
+}
+
+.add-location-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Additional styles for route details */
+.route-details h4 {
+    margin-bottom: 15px;
+    color: #2d3436;
+}
+
+.route-metrics {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.metric-label {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.metric-value {
+    font-weight: 500;
+    color: #2d3436;
+}
+
+.transport-mode {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.mode-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.mode-name {
+    font-weight: 500;
+    color: #2d3436;
+    min-width: 80px;
+}
+
+.distance {
+    margin-left: auto;
+    font-weight: 500;
+    color: #0984e3;
+}
+
+.time-estimates {
+    margin-top: 20px;
+}
+
+.time-estimate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Form styles */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 12px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #0984e3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .optimization-criteria {
+        flex-direction: column;
+    }
+    
+    .criteria-btn {
+        width: 100%;
+    }
+    
+    #graphCanvas {
+        height: 300px;
+    }
+}
